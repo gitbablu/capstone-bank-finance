@@ -7,36 +7,35 @@ pipeline{
                  echo 'github url checkout'
             }
         }
-        stage('codecompile with akshat'){
+        stage('codecompile'){
             steps{
                 echo 'starting compiling'
                 sh 'mvn compile'
             }
         }
-        stage('codetesting with akshat'){
+        stage('codetesting'){
             steps{
                 sh 'mvn test'
             }
         }
-        stage('qa with akshat'){
+        stage('qa'){
             steps{
                 sh 'mvn checkstyle:checkstyle'
             }
         }
-        stage('package with akshat'){
+        stage('building package'){
             steps{
                 sh 'mvn package'
             }
         }
-        stage('run dockerfile'){
+        stage('run dockerfile and build a image'){
           steps{
-               sh 'docker build -t myimg .'
+               sh 'docker build -t bank-finance .'
            }
          }
-        stage('port expose'){
+        stage('run image and acess the app on port expose 8091'){
             steps{
-                sh 'docker run -dt -p 8091:8091 --name c000 myimg'
-            }
+                sh 'docker run -dt -p 8091:8091 --name c01 bank-finance'            }
         }   
     }
 }
