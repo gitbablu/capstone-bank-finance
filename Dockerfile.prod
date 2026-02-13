@@ -20,6 +20,6 @@ COPY --from=build --chown=spring:spring /app/target/*.jar app.jar
 # 3. Switch to the non-root user
 USER spring:spring
 
-EXPOSE 8080
+EXPOSE 8091
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
