@@ -7,7 +7,7 @@ pipeline{
                  echo 'github url checkout'
             }
         }
-        stage('codecompile'){
+     //   stage('codecompile'){
             steps{
                 echo 'starting compiling'
                 sh 'mvn compile'
@@ -27,7 +27,7 @@ pipeline{
             steps{
                 sh 'mvn package'
             }
-        }
+        } //
         stage('run dockerfile and build a image'){
           steps{
                sh 'docker build -t bank-finance .'
