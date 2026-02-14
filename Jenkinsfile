@@ -35,7 +35,7 @@ pipeline{
          }
         stage('run image and acess the app on port expose 8091'){
             steps{
-                sh 'docker run -dt -p 8091:8091 --name c01 bank-finance'            }
+                sh 'docker run -dt -p 8091:8091 --name bank bank-finance'            }
         }   
     }
 }
